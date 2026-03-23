@@ -787,7 +787,7 @@ function checkQuestions(changeQuestion) {
         guarantee = false;
     }
 
-    if (questionNumber > 3) {
+    if (questionNumber > 13) {
         playAudio(openingSong);
     } else {
         nextQuestion(changeQuestion);
