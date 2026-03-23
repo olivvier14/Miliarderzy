@@ -31,6 +31,9 @@ const introContainer = document.getElementById("introContainer");
 const introText = document.getElementById("introText");
 const introLogo = document.getElementById("introLogo");
 const focusBG = document.getElementById("focusBG");
+const particlesBG = document.getElementById("particles-BG")
+const particlesWIN = document.getElementById("particles-WIN")
+const particlesGOOD = document.getElementById("particles-GOOD")
 
 // questions (literally questions database :D)
 const questions = [
@@ -400,6 +403,7 @@ const correctSFX = document.getElementById('correctSFX');
 const loseSFX = document.getElementById('loseSFX');
 const chooseSFX = document.getElementById('chooseSFX');
 const timeEndSFX = document.getElementById('timeEndSFX');
+const applauseSFX = document.getElementById('applauseSFX');
 let canPlayIdleSong = true;
 let interacted = false;
 let canInteractHints = true;
@@ -781,6 +785,7 @@ function checkQuestions(changeQuestion) {
     } else if (questionNumber >= 11 && questionNumber < 14) {
         newTime = 15;
     }
+
     if (questionNumber >= 5) {
         guarantee = true;
     } else {
@@ -788,7 +793,9 @@ function checkQuestions(changeQuestion) {
     }
 
     if (questionNumber > 13) {
-        playAudio(openingSong);
+        playAudio(applauseSFX);
+        document.body.style.animation = "focusBlurShow 1s forwards ease";
+        focusBG.style.animation = "darkBGShow 1s forwards ease";
     } else {
         nextQuestion(changeQuestion);
     }
@@ -905,6 +912,16 @@ function updateTimer() {
     }
 }
 
+function startParticles(win = false, good = false, money = false) {
+    if (win) {
+
+    } else if (good) {
+        
+    } else if (money) {
+
+    }
+}
+
 function options() {
     alert("Opcje gry!");
 }
@@ -912,6 +929,7 @@ function options() {
 // on js page loaded
 window.onload = (e) => {
     introText.style.animation = "intro1 2s forwards ease";
+    startParticles(true)
     setTimeout(function() {
         introText.innerText = "prezentuje";
         introText.style.animation = "intro2 2s forwards ease";
