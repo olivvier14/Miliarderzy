@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <title>Miliarderzy | Oliwier Karczewski</title>
+</head>
+<body>
+    <div class="container-money" id="moneyContainer">
+        Wygrane pieniądze
+        <div id="money" class="money">0zł</div>
+    </div>
+    <div class="container-playingMoney" id="playingMoneyContainer">
+        Grasz o
+        <div id="playingMoney" class="playingMoney">0zł</div>
+    </div>
+    <div id="menuContainer" class="container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Miliarderzy" class="logoImg">
+        </div>
+        <span class="menuText">Witaj w Miliarderach!</span>
+        <table>
+            <tr>
+                <td><button id="startBtn" class="menuBtn">Rozpocznij</button></td>
+            </tr>
+            <tr>
+                <td><button id="modesBtn" class="menuBtn">Tryby gry</button></td>
+            </tr>
+            <tr>
+                <td><button id="optionsBtn" class="menuBtn">Opcje</button></td>
+            </tr>
+            <tr>
+                <td><button id="exitBtn" class="menuBtn">Wyjdź</button></td>
+            </tr>
+        </table>
+    </div>
+    <div class="focusBG" id="focusBG"></div>
+    <div id="questionContainer" class="container-question">
+        <span style="font-weight: bold;">Pytanie</span> <span id="questionNumber"></span>
+        <div class="container-hints">
+            <span id="noHints">Brak podpowiedzi, trzeba było tyle nie korzystać! XD</span>
+            <div class="hintBtn" id="hint50">
+                <img src="images/50-50.png" alt="50/50" width="32" height="32">
+                <span style="margin-left: 10px;">50 / 50</span>
+            </div>
+            <div class="hintBtn" id="hintFriend">
+                <img src="images/friendCall.png" alt="Telefon do przyjaciela" width="32" height="32">
+                <span style="margin-left: 10px;">Telefon do przyjaciela</span>
+            </div>
+            <div class="hintBtn" id="hintChange">
+                <img src="images/changeQuestion.png" alt="Zmień pytanie" width="32" height="32">
+                <span style="margin-left: 10px;">Zmień pytanie</span>
+            </div>
+            <div class="hintBtn" id="hintMinus">
+                <img src="images/minusOne.png" alt="Minus jeden" width="32" height="32">
+                <span style="margin-left: 10px;">Minus jeden</span>
+            </div>
+        </div>
+        <div class="container-friend" id="friendContainer">
+            <img class="friendImg" src="images/friend.jpg" alt="Twój przyjaciel" width="128px" height="128px">
+            <span class="friendAnswerText" id="friendAnswerText">ADWq2awdawd, adw12d1, 1928e81j2ez9qi2w9s</span>
+        </div>
+        <div class="question">
+            <span id="questionText"></span>
+        </div>
+        <div class="options">
+            <button class="optionBtn" id="optionA"></button>
+            <button class="optionBtn" id="optionB"></button>
+            <button class="optionBtn" id="optionC"></button>
+            <button class="optionBtn" id="optionD"></button>
+        </div>
+    </div>
+
+    <div class="container-gameOver" id="gameOverContainer">
+        <div class="gameOverBG">
+            <div class="gameOverText">Przegrałeś, twoja gwarantowana kwota to <span id="gameOverText" style="font-weight: bold;"></span>zł!</div>
+            <div class="container-gameOverBtn">
+                <div class="gameOverBtn1" id="playNextBtn">Graj kolejną</div>
+                <div class="gameOverBtn2" id="toMenuBtn">Menu</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-timer" id="timerContainer">
+        <div class="timer" id="timer"></div>
+    </div>
+
+    <div class="introBG" id="introContainer">
+        <img src="images/logo.png" id="introLogo" alt="Miliarderzy" height="400" width="400">
+        <div class="introText" id="introText">Oliwier Karczewski <span style="color: red; font-style: italic;">Studios</span></div>
+    </div>
+
+    <audio id="mainMenuSong" src="audio/mainMenuSong.mp3" loop></audio>
+    <audio id="openingSong" src="audio/openingSong.mp3"></audio>
+    <audio id="idleSong" src="audio/idleSong.mp3" loop></audio>
+    <audio id="chooseSFX" src="audio/chooseSFX.mp3"></audio>
+    <audio id="correctSFX" src="audio/correctSFX.mp3"></audio>
+    <audio id="loseSFX" src="audio/loseSFX.mp3"></audio>
+    <audio id="questionSFX" src="audio/questionSFX.mp3"></audio>
+    <audio id="timeEndSFX" src="audio/timeEndSFX.mp3"></audio>
+
+    </audio>
+    <div class="info">
+        stworzone przez Oliwiera Karczewskiego | 2026 <br>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
