@@ -20,8 +20,11 @@ Informacje o wersji można znaleźć [tutaj.](#changelog)
 - pierwsza wersja grywalna
 - więcej kontentu
 - poprawki, itp.
-## v0.0.2
-- poprawiono interfejs
+### v0.0.3
+- poprawiono interfejs i responsywność na różnych urządzeniach
+- dodano nowy, nie w pełni gotowy system cząstek (particles), do tła i innych efektów
+### v0.0.2
+- poprawiono interfejs i responsywność na różnych urządzeniach
 ### v0.0.1
 - pierwsza wersja opublikowana
 - jeszcze niegrywalna
