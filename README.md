@@ -20,6 +20,7 @@ Informacje o wersji można znaleźć [tutaj.](#changelog)
 - dodano zakończenie gry
 - dodano tryby gry (bez logiki, aktualnie)
 - zmieniono responsywność
+- naprawiono i zaimplementowano czcionkę, która domyślnie powinna być od samego początku na stronie, nie wyświetlała się poprawnie i generowało to błędy
 - poprawki, itp.
 ### v0.0.3
 - poprawiono interfejs i responsywność na różnych urządzeniach
