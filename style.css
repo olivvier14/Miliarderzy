@@ -33,6 +33,14 @@ body {
     height: 100vh;
 }
 
+.container-modes {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
 .container-money {
     display: flex;
     flex-direction: column;
@@ -69,6 +77,14 @@ body {
 }
 
 .container-gameOver {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container-win {
     display: none;
     flex-direction: column;
     align-items: center;
@@ -124,12 +140,59 @@ body {
     height: 25%;
 }
 
+.winBG {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(50, 50, 50);
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.1);
+    border: 2px solid rgb(75, 75, 75);
+    border-radius: 10%;
+    width: 100%;
+    height: 25%;
+    animation: winIdle 2s infinite ease;
+}
+
 .container-gameOverBtn {
     display: flex;
     flex-direction: row;
     justify-content: center;
     margin: 10px;
     width: 100%;
+}
+
+.container-modeBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 50px;
+}
+
+.container-winBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+    width: 100%;
+}
+
+.container-modeImages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-left: auto;
+}
+
+.container-modeText {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
 }
 
 .gameOverBtn1 {
@@ -166,8 +229,34 @@ body {
     text-align: center;
 }
 
+.modeBtn {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0 10px 0;
+    padding: 15px;
+    height: 200px;
+    width: 350px;
+    font-size: 25px;
+    background-color: rgb(50, 50, 50);
+    border: 2px solid rgb(75, 75, 75);
+    color: white;
+    cursor: pointer;
+    border-radius: 10%;
+    box-shadow: 0 5px 5px rgba(255, 255, 255, 0.1);
+}
+
+.chosenImg {
+    justify-self: flex-end;
+    align-self: flex-start;
+}
+
 .gameOverText {
     font-size: 30px;
+    text-align: center;
+}
+
+.winText {
+    font-size: 35px;
     text-align: center;
 }
 
@@ -323,6 +412,17 @@ body {
     margin-right: 75px;
 }
 
+.modesText {
+    font-size: 50px;
+    text-align: right;
+}
+
+#modeDesc {
+    font-size: 20px;
+    font-style: italic;
+    color: rgb(200, 200, 200);
+}
+
 .menuBtn {
     width: 100%;
     padding: 15px;
@@ -337,8 +437,9 @@ body {
 }
 
 .info {
+    opacity: 0.5;
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     font-size: 14px;
     color: rgb(150, 150, 150);
     transition: all 0.375s ease;
@@ -386,7 +487,7 @@ body {
 }
 
 .gameOverBtn1:hover {
-    animation: menuBtn 2s infinite ease;
+    animation: GOBtn 2s infinite ease;
 }
 
 .gameOverBtn2:hover {
@@ -417,6 +518,24 @@ body {
         transform: scale(1);
         border-color: rgb(75, 75, 75);
         box-shadow: 0 5px 5px rgba(255, 255, 255, 0.1);
+    }
+}
+
+@keyframes GOBtn {
+    0% {
+        transform: scale(1);
+        border-color: rgb(75, 0, 0);
+        box-shadow: 0 5px 5px rgba(255, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.05);
+        border-color: rgb(125, 0, 0);
+        box-shadow: 0 10px 10px rgba(255, 0, 0, 0.15);
+    }
+    100% {
+        transform: scale(1);
+        border-color: rgb(75, 0, 0);
+        box-shadow: 0 5px 5px rgba(255, 0, 0, 0.1);
     }
 }
 
@@ -992,6 +1111,71 @@ body {
     }
 }
 
+@keyframes winIdle {
+    0% {
+        background-color: rgb(50, 50, 50);
+        color: white;
+        transform: scale(1) rotateZ(0deg);
+    }
+    50% {
+        background: rgb(129, 110, 0);
+        color: gold;
+        transform: scale(1.05) rotateZ(2deg);
+    }
+    75% {
+        transform: scale(0.95) rotateZ(-3deg);
+    }
+    100% {
+        background-color: rgb(50, 50, 50);
+        color: white;
+        transform: scale(1) rotateZ(0deg);
+    }
+}
+
+@keyframes modeSelect {
+    0% {
+        border-color: rgb(75, 75, 75);
+        transform: scale(1);
+    }
+    100% {
+        border-color: white;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes modeUnselect {
+    0% {
+        border-color: white;
+        transform: scale(1.05);
+    }
+    100% {
+        border-color: rgb(75, 75, 75);
+        transform: scale(1);
+    }
+}
+
+@keyframes modeImgSelect {
+    0% {
+        opacity: 0;
+        transform: scale(1.25) rotateZ(25deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotateZ(0deg);
+    }
+}
+
+@keyframes modeImgUnselect {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotateZ(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.25) rotateZ(-25deg);
+    }
+}
+
 /* tablets responsivity */
 @media (min-width: 481px) and (max-width: 1024px) {
     .container {
@@ -1014,6 +1198,16 @@ body {
 
     .container-playingMoney {
         font-size: 20px;
+    }
+
+    .container-modes {
+        flex-direction: column;
+    }
+
+    .container-modeBtn {
+        margin-top: 25px;
+        margin-left: 0;
+        justify-self: center;
     }
 
     .info {
@@ -1094,6 +1288,37 @@ body {
         bottom: 25px;
     }
 
+    .container-modes {
+        flex-direction: column;
+    }
+
+    .container-modeBtn {
+        margin-top: 25px;
+        margin-left: 0;
+        justify-self: center;
+    }
+
+    .modeBtn {
+        height: 125px;
+        width: 175px;
+        font-size: 18px;
+        width: 95%;
+    }
+
+    .modesText {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    #modeImg {
+        height: 32px;
+        width: 32px;
+    }
+
+    #modeDesc {
+        font-size: 15px;
+    }
+
     .info {
         font-size: 10px;
         bottom: 0;
@@ -1121,6 +1346,11 @@ body {
 
     .gameOverText {
         font-size: 25px;
+        width: 75%;
+    }
+
+    .winText {
+        font-size: 30px;
         width: 75%;
     }
 

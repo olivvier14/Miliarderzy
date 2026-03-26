@@ -36,6 +36,45 @@
             </tr>
         </table>
     </div>
+    <div id="modesContainer" class="container-modes">
+        <span class="modesText">Dobierz tryby gry</span>
+        <div class="container-modeBtn">
+            <button id="modeBackBtn" class="menuBtn">
+                Powrót
+            </button>
+            <button id="mode1Btn" class="modeBtn">
+                <div class="container-modeText">
+                    <span id="modeDesc">Odpowiadaj na pytania z coraz to większą presją czasu!</span>
+                    Sprężaj się!
+                </div>
+                <div class="container-modeImages">
+                    <img src="images/chosen.png" alt="Chosen" height="24" width="24" id="chosenImg1" style="opacity: 0;">
+                    <img src="images/time.png" alt="Time" height="64" width="64" id="modeImg">
+                </div>
+                
+            </button>
+            <button id="mode2Btn" class="modeBtn">
+                <div class="container-modeText">
+                    <span id="modeDesc">Dostajesz dodatkowe 2 odpowiedzi do wyboru - większe kłopoty!</span>
+                    Ekstra+
+                </div>
+                <div class="container-modeImages">
+                    <img src="images/chosen.png" alt="Chosen" height="24" width="24" id="chosenImg2" style="opacity: 0;">
+                    <img src="images/extraPlus.png" alt="Extra plus" height="64" width="64" id="modeImg">
+                </div>
+            </button>
+            <button id="mode3Btn" class="modeBtn">
+                <div class="container-modeText">
+                    <span id="modeDesc">Masz do wyboru tylko 2 odpowiedzi, kosztem tylko 1 podpowiedzi.</span>
+                    Dwa za jeden
+                </div>
+                <div class="container-modeImages">
+                    <img src="images/chosen.png" alt="Chosen" height="24" width="24" id="chosenImg3" style="opacity: 0;">
+                    <img src="images/twoForOne.png" alt="Two For One" height="64" width="64" id="modeImg">
+                </div>
+            </button>
+        </div>
+    </div>
     <div class="focusBG" id="focusBG"></div>
     <div id="questionContainer" class="container-question">
         <span style="font-weight: bold;">Pytanie</span> <span id="questionNumber"></span>
@@ -75,10 +114,20 @@
 
     <div class="container-gameOver" id="gameOverContainer">
         <div class="gameOverBG">
-            <div class="gameOverText">Przegrałeś, twoja gwarantowana kwota to <span id="gameOverText" style="font-weight: bold;"></span>zł!</div>
+            <div class="gameOverText">Przegrałeś, twoja gwarantowana kwota to <span id="gameOverText" style="font-weight: bold;">zł!</span></div>
             <div class="container-gameOverBtn">
-                <div class="gameOverBtn1" id="playNextBtn">Graj kolejną</div>
+                <div class="gameOverBtn1" id="playNextBtn">Graj jeszcze raz</div>
                 <div class="gameOverBtn2" id="toMenuBtn">Menu</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-win" id="winContainer">
+        <div class="winBG">
+            <div class="winText">Wygrałeś <span style="font-weight: bold;">1 miliard zł!</span><br>Jesteś prawdziwym Miliarderem!</div>
+            <div class="container-winBtn">
+                <div class="gameOverBtn2" id="toMenuWINBtn">Super!!@!</div>
+                <div class="gameOverBtn1" id="playNextWINBtn">Chcę jeszcze!</div>
             </div>
         </div>
     </div>

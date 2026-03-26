@@ -1,14 +1,23 @@
 // references to elements
 const startBtn = document.getElementById("startBtn");
+const modesBtn = document.getElementById("modesBtn");
 const optionsBtn = document.getElementById("optionsBtn");
 const exitBtn = document.getElementById("exitBtn");
 const playNextBtn = document.getElementById("playNextBtn");
 const toMenuBtn = document.getElementById("toMenuBtn");
+const playNextWINBtn = document.getElementById("playNextWINBtn");
+const toMenuWINBtn = document.getElementById("toMenuWINBtn");
+const modeBackBtn = document.getElementById("modeBackBtn");
+const mode1Btn = document.getElementById("mode1Btn");
+const mode2Btn = document.getElementById("mode2Btn");
+const mode3Btn = document.getElementById("mode3Btn");
 const menuContainer = document.getElementById("menuContainer");
 const moneyContainer = document.getElementById("moneyContainer");
 const playingMoneyContainer = document.getElementById("playingMoneyContainer");
 const questionContainer = document.getElementById("questionContainer");
 const gameOverContainer = document.getElementById("gameOverContainer");
+const winContainer = document.getElementById("winContainer");
+const modesContainer = document.getElementById("modesContainer");
 const gameOverText = document.getElementById("gameOverText");
 const optionA = document.getElementById("optionA");
 const optionB = document.getElementById("optionB");
@@ -21,7 +30,6 @@ const hint50 = document.getElementById("hint50");
 const hintFriend = document.getElementById("hintFriend");
 const hintChange = document.getElementById("hintChange");
 const hintMinus = document.getElementById("hintMinus");
-const modesBtn = document.getElementById("modesBtn");
 const noHints = document.getElementById("noHints");
 const friendAnswerText = document.getElementById("friendAnswerText");
 const friendContainer = document.getElementById("friendContainer");
@@ -34,6 +42,9 @@ const focusBG = document.getElementById("focusBG");
 const particlesBG = document.getElementById("particles-BG")
 const particlesWIN = document.getElementById("particles-WIN")
 const particlesGOOD = document.getElementById("particles-GOOD")
+const chosenImg1 = document.getElementById("chosenImg1");
+const chosenImg2 = document.getElementById("chosenImg2");
+const chosenImg3 = document.getElementById("chosenImg3");
 
 // questions (literally questions database :D)
 const questions = [
@@ -355,20 +366,20 @@ let usedHints = {
     hintMinus: false
 };
 const moneyPlaying = {
-    1: ["100zł", 100],
-    2: ["500zł", 500],
-    3: ["1 000zł", 1000],
-    4: ["5 000zł", 5000],
-    5: ["25 000zł", 25000],
-    6: ["100 000zł", 100000],
-    7: ["500 000zł", 500000],
-    8: ["1 000 000zł", 1000000],
-    9: ["10 000 000zł", 10000000],
-    10: ["50 000 000zł", 50000000],
-    11: ["100 000 000zł", 100000000],
-    12: ["250 000 000zł", 250000000],
-    13: ["500 000 000zł", 500000000],
-    14: ["1 000 000 000zł", 1000000000]
+    1: ["100 zł", 100],
+    2: ["500 zł", 500],
+    3: ["1 000 zł", 1000],
+    4: ["5 000 zł", 5000],
+    5: ["25 000 zł", 25000],
+    6: ["100 000 zł", 100000],
+    7: ["500 000 zł", 500000],
+    8: ["1 000 000 zł", 1000000],
+    9: ["10 000 000 zł", 10000000],
+    10: ["50 000 000 zł", 50000000],
+    11: ["100 000 000 zł", 100000000],
+    12: ["250 000 000 zł", 250000000],
+    13: ["500 000 000 zł", 500000000],
+    14: ["1 mld zł", 1000000000]
 }
 const friendGoodHints = [
     "Myślę, że poprawna odpowiedź to " + questions[currentQuestion].correctOption,
@@ -413,10 +424,54 @@ let time = 31;
 let canTimerUpdate = true;
 let canTimerTick = true;
 
+let modes = {
+    time: false,
+    extraPlus: false,
+    twoForOne: false
+}
+
 // event listeners
 
 startBtn.addEventListener("click", function() {
     startGame(false);
+});
+
+modesBtn.addEventListener("click", function() {
+    modeBackBtn.style.pointerEvents = "auto";
+    mode1Btn.style.pointerEvents = "auto";
+    mode2Btn.style.pointerEvents = "auto";
+    mode3Btn.style.pointerEvents = "auto";
+    startBtn.style.pointerEvents = "none";
+    modesBtn.style.pointerEvents = "none";
+    optionsBtn.style.pointerEvents = "none";
+    exitBtn.style.pointerEvents = "none";
+    setTimeout(function() {
+        modesBtn.style.animation = "menuBtnClick 1s forwards ease-out";
+        menuContainer.style.animation = "hideMenu 0.5s forwards ease-in";
+        setTimeout(function() {
+            menuContainer.style.display = "none";
+            modesContainer.style.display = "flex";
+            modesContainer.style.animation = "showMenu 0.5s forwards ease-out";
+        }, 500);
+    }, 50);
+});
+
+modeBackBtn.addEventListener("click", function() {
+    modeBackBtn.style.pointerEvents = "none";
+    mode1Btn.style.pointerEvents = "none";
+    mode2Btn.style.pointerEvents = "none";
+    mode3Btn.style.pointerEvents = "none";
+    modesContainer.style.animation = "hideMenu 0.5s forwards ease-in";
+    setTimeout(function() {
+        modesContainer.style.display = "none";
+        menuContainer.style.display = "flex";
+        menuContainer.style.animation = "showMenu 0.5s forwards ease-out";
+        startBtn.style.pointerEvents = "auto";
+        modesBtn.style.pointerEvents = "auto";
+        optionsBtn.style.pointerEvents = "auto";
+        exitBtn.style.pointerEvents = "auto";
+        modesBtn.style.animation = "none";
+    }, 500);
 });
 
 optionsBtn.addEventListener("click", function() {
@@ -425,10 +480,6 @@ optionsBtn.addEventListener("click", function() {
 
 exitBtn.addEventListener("click", function() {
     window.close();
-});
-
-modesBtn.addEventListener("click", function() {
-    alert("Tryby gry!");
 });
 
 optionA.addEventListener("click", function() {
@@ -483,6 +534,10 @@ startBtn.addEventListener("mouseover", function() {
     startBtn.style.animation = "menuBtn 2s infinite ease";
 });
 
+modesBtn.addEventListener("mouseover", function() {
+    modesBtn.style.animation = "menuBtn 2s infinite ease";
+});
+
 optionsBtn.addEventListener("mouseover", function() {
     optionsBtn.style.animation = "menuBtn 2s infinite ease";
 });
@@ -495,12 +550,52 @@ startBtn.addEventListener("mouseout", function() {
     startBtn.style.animation = "none";
 });
 
+modesBtn.addEventListener("mouseout", function() {
+    modesBtn.style.animation = "none";
+});
+
 optionsBtn.addEventListener("mouseout", function() {
     optionsBtn.style.animation = "none";
 });
 
 exitBtn.addEventListener("mouseout", function() {
     exitBtn.style.animation = "none";
+});
+
+mode1Btn.addEventListener("click", function() {
+    if (modes.time == false) {
+        mode1Btn.style.animation = "modeSelect 0.375s forwards ease";
+        chosenImg1.style.animation = "modeImgSelect 0.375s forwards ease";
+        modes.time = true;
+    } else {
+        mode1Btn.style.animation = "modeUnselect 0.375s forwards ease";
+        chosenImg1.style.animation = "modeImgUnselect 0.375s forwards ease";
+        modes.time = false;
+    }
+});
+
+mode2Btn.addEventListener("click", function() {
+    if (modes.extraPlus == false) {
+        mode2Btn.style.animation = "modeSelect 0.375s forwards ease";
+        chosenImg2.style.animation = "modeImgSelect 0.375s forwards ease";
+        modes.extraPlus = true;
+    } else {
+        mode2Btn.style.animation = "modeUnselect 0.375s forwards ease";
+        chosenImg2.style.animation = "modeImgUnselect 0.375s forwards ease";
+        modes.extraPlus = false;
+    }
+});
+
+mode3Btn.addEventListener("click", function() {
+    if (modes.twoForOne == false) {
+        mode3Btn.style.animation = "modeSelect 0.375s forwards ease";
+        chosenImg3.style.animation = "modeImgSelect 0.375s forwards ease";
+        modes.twoForOne = true;
+    } else {
+        mode3Btn.style.animation = "modeUnselect 0.375s forwards ease";
+        chosenImg3.style.animation = "modeImgUnselect 0.375s forwards ease";
+        modes.twoForOne = false;
+    }
 });
 
 toMenuBtn.addEventListener("click", function() {
@@ -513,9 +608,10 @@ toMenuBtn.addEventListener("click", function() {
         menuContainer.style.display = "flex";
         menuContainer.style.animation = "showMenu 1s forwards ease-out";
         updateMoney();
-        startBtn.style.pointerEvents = "auto"
-        optionsBtn.style.pointerEvents = "auto"
-        exitBtn.style.pointerEvents = "auto"
+        startBtn.style.pointerEvents = "auto";
+        modesBtn.style.pointerEvents = "auto";
+        optionsBtn.style.pointerEvents = "auto";
+        exitBtn.style.pointerEvents = "auto";
         guarantee = false;
         playAudio(mainMenuSong);
         document.body.style.animation = "bgBlurReveal 0.375s forwards ease-in";
@@ -533,6 +629,42 @@ playNextBtn.addEventListener("click", function() {
         gameOverContainer.style.display = "none";
         updateMoney();
         startGame(true);
+    }, 1000);
+    
+});
+
+toMenuWINBtn.addEventListener("click", function() {
+    toMenuWINBtn.style.pointerEvents = "none";
+    playNextWINBtn.style.pointerEvents = "none";
+    winContainer.style.animation = "hideGameOver 1s forwards ease-in";
+    focusBG.style.animation = "darkBGHide 1s forwards ease-out";
+    setTimeout(function() {
+        winContainer.style.display = "none";
+        menuContainer.style.display = "flex";
+        menuContainer.style.animation = "showMenu 1s forwards ease-out";
+        updateMoney();
+        startBtn.style.pointerEvents = "auto";
+        modesBtn.style.pointerEvents = "auto";
+        optionsBtn.style.pointerEvents = "auto";
+        exitBtn.style.pointerEvents = "auto";
+        guarantee = false;
+        playAudio(mainMenuSong);
+        document.body.style.animation = "bgBlurReveal 0.375s forwards ease-in";
+        stopAudio(applauseSFX);
+    }, 1000);
+});
+
+playNextWINBtn.addEventListener("click", function() {
+    toMenuWINBtn.style.pointerEvents = "none";
+    playNextWINBtn.style.pointerEvents = "none";
+    winContainer.style.animation = "hideGameOver 1s forwards ease-in";
+    focusBG.style.animation = "darkBGHide 1s forwards ease";
+    document.body.style.animation = "bgBlurHide 1s forwards ease";
+    setTimeout(function() {
+        winContainer.style.display = "none";
+        updateMoney();
+        startGame(true);
+        stopAudio(applauseSFX);
     }, 1000);
     
 });
@@ -618,6 +750,7 @@ hintMinus.addEventListener("click", function() {
 
 function startGame(playNext) {
     startBtn.style.pointerEvents = "none";
+    modesBtn.style.pointerEvents = "none";
     optionsBtn.style.pointerEvents = "none";
     exitBtn.style.pointerEvents = "none";
     questionNumber = 0;
@@ -796,6 +929,11 @@ function checkQuestions(changeQuestion) {
         playAudio(applauseSFX);
         document.body.style.animation = "focusBlurShow 1s forwards ease";
         focusBG.style.animation = "darkBGShow 1s forwards ease";
+        playingMoneyContainer.style.animation = "hidePlayingMoney 1s forwards ease-out";
+        winContainer.style.display = "flex";
+        winContainer.style.animation = "revealQuestion 1s forwards cubic-bezier(0.25, 1, 0.5, 1)";
+        toMenuWINBtn.style.pointerEvents = "auto";
+        playNextWINBtn.style.pointerEvents = "auto";
     } else {
         nextQuestion(changeQuestion);
     }
