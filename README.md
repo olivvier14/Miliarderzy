@@ -5,7 +5,7 @@ To podróbka znanego polskiego teleturnieju "Milionerzy", w stylu faktycznej i i
 - JavaScript (JS)
 - Cascade Style Sheets (CSS)
 - HyperText Markup Language (HTML)
-- Python (wkrótce)
+- Python (wkrótce, jako gra w pliku .exe!)
 
 # ⚠️ Gra nie jest jeszcze grywalna!
 Proszę nie korzystać jeszcze ze strony, To dopiero testy!
@@ -16,9 +16,10 @@ Informacje o wersji można znaleźć [tutaj.](#changelog)
 [Miliarderzy](https://olivvier14.github.io/Miliarderzy/)
 
 # Changelog
-### v0.1.0 (wkrótce)
-- pierwsza wersja grywalna
-- więcej kontentu
+### v0.1.0 
+- dodano zakończenie gry
+- dodano tryby gry (bez logiki, aktualnie)
+- zmieniono responsywność
 - poprawki, itp.
 ### v0.0.3
 - poprawiono interfejs i responsywność na różnych urządzeniach
